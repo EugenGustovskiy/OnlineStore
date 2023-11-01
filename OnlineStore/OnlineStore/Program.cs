@@ -10,3 +10,20 @@ foreach (Order order in orders)
 {
     Console.WriteLine(order.GetFullInformation());
 }
+
+foreach (Order order in orders)
+{
+    string customerNumberString = order.CustomerNumber.ToString();
+    if (customerNumberString.StartsWith("375"))
+    {
+        Console.WriteLine(order.GetFullInformation());
+    }
+}
+
+foreach (Order order in orders)
+{
+    if (order.ProductPrice < 2000 && order.ProductName.Contains("TV"))
+    {
+        Console.WriteLine(order.GetFullInformation());
+    }
+}
