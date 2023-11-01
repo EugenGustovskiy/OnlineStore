@@ -1,0 +1,14 @@
+D:\Project\OnlineStore\OnlineStore\OnlineStore\bin\Debug\net6.0\OnlineStore.exe
+D:\Project\OnlineStore\OnlineStore\OnlineStore\bin\Debug\net6.0\OnlineStore.deps.json
+D:\Project\OnlineStore\OnlineStore\OnlineStore\bin\Debug\net6.0\OnlineStore.runtimeconfig.json
+D:\Project\OnlineStore\OnlineStore\OnlineStore\bin\Debug\net6.0\OnlineStore.dll
+D:\Project\OnlineStore\OnlineStore\OnlineStore\bin\Debug\net6.0\OnlineStore.pdb
+D:\Project\OnlineStore\OnlineStore\OnlineStore\obj\Debug\net6.0\OnlineStore.GeneratedMSBuildEditorConfig.editorconfig
+D:\Project\OnlineStore\OnlineStore\OnlineStore\obj\Debug\net6.0\OnlineStore.AssemblyInfoInputs.cache
+D:\Project\OnlineStore\OnlineStore\OnlineStore\obj\Debug\net6.0\OnlineStore.AssemblyInfo.cs
+D:\Project\OnlineStore\OnlineStore\OnlineStore\obj\Debug\net6.0\OnlineStore.csproj.CoreCompileInputs.cache
+D:\Project\OnlineStore\OnlineStore\OnlineStore\obj\Debug\net6.0\OnlineStore.dll
+D:\Project\OnlineStore\OnlineStore\OnlineStore\obj\Debug\net6.0\refint\OnlineStore.dll
+D:\Project\OnlineStore\OnlineStore\OnlineStore\obj\Debug\net6.0\OnlineStore.pdb
+D:\Project\OnlineStore\OnlineStore\OnlineStore\obj\Debug\net6.0\OnlineStore.genruntimeconfig.cache
+D:\Project\OnlineStore\OnlineStore\OnlineStore\obj\Debug\net6.0\ref\OnlineStore.dll
