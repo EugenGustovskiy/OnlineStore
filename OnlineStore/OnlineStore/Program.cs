@@ -8,24 +8,41 @@ DiscountOrder discountOrder1 = new("Phone Huawei Mate 50 Pro", 2699, 37533428762
 
 Order[] orders = { order1, order2, order3, vipOrder1, discountOrder1 };
 
-foreach (Order order in orders)
-{
-    Console.WriteLine(order.GetFullInformation());
-}
+//foreach (Order order in orders)
+//{
+//    Console.WriteLine(order.GetFullInformation());
+//}
 
-foreach (Order order in orders)
-{
-    string customerNumberString = order.CustomerNumber.ToString();
-    if (customerNumberString.StartsWith("375"))
-    {
-        Console.WriteLine(order.GetFullInformation());
-    }
-}
+//foreach (Order order in orders)
+//{
+//    string customerNumberString = order.CustomerNumber.ToString();
+//    if (customerNumberString.StartsWith("375"))
+//    {
+//        Console.WriteLine(order.GetFullInformation());
+//    }
+//}
 
-foreach (Order order in orders)
-{
-    if (order.ProductPrice < 2000 && order.ProductName.Contains("TV"))
-    {
-        Console.WriteLine(order.GetFullInformation());
-    }
-}
+//foreach (Order order in orders)
+//{
+//    if (order.ProductPrice < 2000 && order.ProductName.Contains("TV"))
+//    {
+//        Console.WriteLine(order.GetFullInformation());
+//    }
+//}
+
+
+MyList<Order> listOrders = new MyList<Order>();
+listOrders.Add(order1);
+listOrders.Add(order2);
+listOrders.Add(order3);
+listOrders.Add(vipOrder1);
+listOrders.Add(discountOrder1);
+
+//int position = listOrders.FindPosition(order2);
+//int amount = listOrders.AmountOfElements();
+//Order element = listOrders.ReturnElement(0);
+//listOrders.RemoveElement(discountOrder1);
+listOrders.DisplayInformation(listOrders);
+
+
+Console.WriteLine("eugen");

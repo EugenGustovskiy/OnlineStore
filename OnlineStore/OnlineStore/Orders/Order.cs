@@ -65,7 +65,7 @@
 
         public virtual string GetFullInformation()
         {
-            return $"Product name: {ProductName}, Product price: {ProductPrice} BYN, Customer number: {CustomerNumber}, Delivery address: {DeliveryAddress}";
+            return $"Product name: {ProductName}, Product price: {ProductPrice} BYN, Customer number: +{CustomerNumber}, Delivery address: {DeliveryAddress}";
         }
     }
 }

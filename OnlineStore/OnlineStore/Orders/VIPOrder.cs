@@ -12,7 +12,7 @@
 
         public override string GetFullInformation()
         {
-            return $"Product name: {ProductName}, Product price: {ProductPrice} BYN, Customer number: {CustomerNumber}, " +
+            return $"Product name: {ProductName}, Product price: {ProductPrice} BYN, Customer number: +{CustomerNumber}, " +
                    $"Delivery address: {DeliveryAddress}, Present: {Present}";
         }
     }
