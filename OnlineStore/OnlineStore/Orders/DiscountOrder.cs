@@ -1,4 +1,5 @@
 ﻿namespace OnlineStore
+
 {
     public class DiscountOrder : Order
     {

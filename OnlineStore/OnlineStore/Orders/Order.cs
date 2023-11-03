@@ -1,6 +1,7 @@
 ﻿namespace OnlineStore
+
 {
-    public class Order
+    public class Order : IComparable<Order>
     {
         private string _productName;
         private float _productPrice;
@@ -67,5 +68,25 @@
         {
             return $"Product name: {ProductName}, Product price: {ProductPrice} BYN, Customer number: +{CustomerNumber}, Delivery address: {DeliveryAddress}";
         }
+
+        //Increase
+        public int CompareTo(Order? other)
+        {
+            if (other == null)
+            {
+                return 1;
+            }
+            return CustomerNumber.CompareTo(other.CustomerNumber);
+        }
+
+        //Decreasing
+        /*public int CompareTo(Order? other)
+        {
+            if (other == null)
+            {
+                return 1;
+            }
+            return other.CustomerNumber.CompareTo(CustomerNumber);
+        }*/
     }
 }
