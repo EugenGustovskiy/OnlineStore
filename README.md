@@ -11,8 +11,8 @@ Task 2
 
 Task 3
 1. Ввести новый типы данных VIPOrder, DiscountOrder и OrdinaryOrder (наследники от Order). 
-  1.1 В VIPOrder добавить property с описанием  подарка от службы доставки (string)
-  1.2 В DiscountOrder добавить property с размером скидки (float) 
+	1.1 В VIPOrder добавить property с описанием  подарка от службы доставки (string)
+	1.2 В DiscountOrder добавить property с размером скидки (float) 
 2. Для всех типов реализовать соответствующие конструкторы
 3. Создать массив из Order разлиных типов, вывести на экран полную информацию о них
 
