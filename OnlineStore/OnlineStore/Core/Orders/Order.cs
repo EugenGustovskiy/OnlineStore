@@ -1,4 +1,4 @@
-﻿namespace OnlineStore
+﻿namespace OnlineStore.Core.Orders
 
 {
     public class Order : IComparable<Order>
@@ -6,11 +6,11 @@
         private string _productName;
         private float _productPrice;
         private long _customerNumber;
-        
+
         public string ProductName
         {
             get
-            { 
+            {
                 return _productName;
             }
             set
@@ -34,7 +34,7 @@
             set
             {
                 if (value > 0 && value < 4000)
-                { 
+                {
                     _productPrice = value;
                 }
             }

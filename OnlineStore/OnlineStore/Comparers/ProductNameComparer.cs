@@ -1,4 +1,6 @@
-﻿namespace OnlineStore.Comparers
+﻿using OnlineStore.Core.Orders;
+
+namespace OnlineStore.Comparers
 {
     internal class ProductNameComparer : IComparer<Order>
     {

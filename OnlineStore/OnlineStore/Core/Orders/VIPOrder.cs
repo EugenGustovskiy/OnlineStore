@@ -1,11 +1,11 @@
-﻿namespace OnlineStore
+﻿namespace OnlineStore.Core.Orders
 
 {
     public class VIPOrder : Order
     {
-        public string Present {  get; set; }
+        public string Present { get; set; }
 
-        public VIPOrder(string productName, float productPrice, long customerName, string deliveryAddress, string present):base
+        public VIPOrder(string productName, float productPrice, long customerName, string deliveryAddress, string present) : base
                        (productName, productPrice, customerName, deliveryAddress)
         {
             Present = present;

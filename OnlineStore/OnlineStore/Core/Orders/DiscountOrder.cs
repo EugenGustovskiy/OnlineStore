@@ -1,9 +1,9 @@
-﻿namespace OnlineStore
+﻿namespace OnlineStore.Core.Orders
 
 {
     public class DiscountOrder : Order
     {
-        public float Discount {  get; set; }
+        public float Discount { get; set; }
 
         public DiscountOrder(string productName, float productPrice, long customerName, string deliveryAddress, float discount) : base
                        (productName, productPrice, customerName, deliveryAddress)
