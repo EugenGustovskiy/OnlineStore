@@ -1,5 +1,4 @@
 ﻿using OnlineStore;
-using OnlineStore.Comparers;
 
 Order order1 = new ("Xiaomi MI TV", 1329, 375336746162, "Minks, Odintsova, 21, 42");
 Order order2 = new ("Phone Apple iPhone 14", 3079, 375298561972, "Minks, Kuntsevschina, 11, 32");
@@ -12,13 +11,37 @@ DiscountOrder discountOrder2 = new("Phone Huawei Mate 50 Pro", 2699, 37544469752
 
 List<Order> orders = new() { order1, order2, order3, order4, vipOrder1, vipOrder2, discountOrder1, discountOrder2 };
 
-ProductPriceComparer productPriceComparer = new ProductPriceComparer();
-ProductNameComparer productNameComparer = new ProductNameComparer();
-DeliveryAddressComparer deliveryAddressComparer = new DeliveryAddressComparer();
+var deliveryAddress = orders.OrderBy(x => x.DeliveryAddress).ToList();
+var productName = orders.OrderBy(x => x.ProductName).ToList();
+var productPrice = orders.OrderBy(x => x.ProductPrice).ToList();
+var customerNumber = orders.OrderBy(x => x.CustomerNumber).ToList();
 
-orders.Sort(deliveryAddressComparer);
+//var deliveryAddress = orders.OrderByDescending(x => x.DeliveryAddress).ToList();
+//var productName = orders.OrderByDescending(x => x.ProductName).ToList();
+//var productPrice = orders.OrderByDescending(x => x.ProductPrice).ToList();
+//var customerNumber = orders.OrderByDescending(x => x.CustomerNumber).ToList();
 
-foreach (Order order in orders)
+var listOrders = orders.Where(x => x.ProductPrice < 2000).Select(x => x.ProductName).Distinct().OrderBy(x => x).ToList();
+foreach (var order in listOrders)
 {
-    Console.WriteLine(order.GetFullInformation());
-} 
+    Console.WriteLine(order);
+}
+
+var productCounts = orders.GroupBy(order => order.ProductName)
+                          .Select(x => new
+                          {
+                              ProductName = x.Key,
+                              Count = x.Count()
+                          })
+                          .ToList();
+
+int maxCount = productCounts.Max(x => x.Count);
+
+var mostFrequentProducts = productCounts.Where(x => x.Count == maxCount)
+                                        .Select(x => x.ProductName)
+                                        .ToList();
+
+foreach (var product in mostFrequentProducts)
+{
+    Console.WriteLine($"PRODACT NAME: {product}, QUANTITY: {maxCount};");
+}

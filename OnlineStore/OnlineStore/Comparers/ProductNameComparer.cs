@@ -1,6 +1,4 @@
-﻿using System.Collections;
-
-namespace OnlineStore.Comparers
+﻿namespace OnlineStore.Comparers
 {
     internal class ProductNameComparer : IComparer<Order>
     {
