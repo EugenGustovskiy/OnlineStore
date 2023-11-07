@@ -16,6 +16,7 @@
                 {
                     throw new ArgumentOutOfRangeException("Invalid value");
                 }
+                _discount = value;
             }
         }
 
@@ -29,6 +30,20 @@
         {
             return $"Product name: {ProductName}, Product price: {ProductPrice} BYN, Customer number: +{CustomerNumber}, " +
                    $"Delivery address: {DeliveryAddress}, Discount: {Discount}%";
+        }
+
+        public override bool Equals(object? obj)
+        {
+            if (obj is DiscountOrder)
+            {
+                DiscountOrder discountOrder = obj as DiscountOrder;
+                return discountOrder.ProductName == ProductName &&
+                       discountOrder.ProductPrice == ProductPrice &&
+                       discountOrder.CustomerNumber == CustomerNumber &&
+                       discountOrder.DeliveryAddress == DeliveryAddress &&
+                       discountOrder.Discount == Discount;
+            }
+            return false;
         }
     }
 }

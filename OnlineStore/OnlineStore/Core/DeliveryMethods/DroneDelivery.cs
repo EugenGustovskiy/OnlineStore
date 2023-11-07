@@ -14,7 +14,7 @@ namespace OnlineStore.Core.DeliveryMethods
             }
             set
             {
-                if(value.Length != 10)
+                if(value.Length != 10 || value == null)
                 {
                     throw new ArgumentOutOfRangeException("Invalid value");
                 }

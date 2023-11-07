@@ -31,7 +31,7 @@
             }
             set
             {
-                if(value < 0 || value > 4000)
+                if(value <= 0 || value > 4000)
                 {
                     throw new ArgumentOutOfRangeException("Invalid value");
                 }
@@ -62,7 +62,7 @@
             }
             set
             {
-                if(value == "No address" || value == "")
+                if (value == "No address" || value == "" || value == null)
                 {
                     throw new ArgumentOutOfRangeException("Invalid value");
                 }
@@ -102,5 +102,18 @@
             }
             return other.CustomerNumber.CompareTo(CustomerNumber);
         }*/
+
+        public override bool Equals(object? obj)
+        { 
+            if(obj is Order)
+            {
+                Order order = obj as Order;
+                return order.ProductName == ProductName &&
+                       order.ProductPrice == ProductPrice &&
+                       order.CustomerNumber == CustomerNumber &&
+                       order.DeliveryAddress == DeliveryAddress;
+            }
+            return false;
+        }
     }
 }

@@ -18,7 +18,7 @@ namespace OnlineStore.Core.DeliveryMethods
             } 
             set
             {
-                if (value == "No name" || value == "")
+                if (value == "No name" || value == "" || value == null)
                 {
                     throw new ArgumentOutOfRangeException("Invalid value");
                 }
@@ -46,7 +46,7 @@ namespace OnlineStore.Core.DeliveryMethods
         {
             get
             {
-                return _averageDeliveryTime;
+                return _maximumOrderQuantity;
             }
             set
             {

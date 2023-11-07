@@ -14,7 +14,7 @@ namespace OnlineStore.Core
             }
             set
             {
-                if (value == "No name" || value == "")
+                if (value == "No company name" || value == "" || value == null)
                 {
                     throw new ArgumentOutOfRangeException("Invalid value");
                 }

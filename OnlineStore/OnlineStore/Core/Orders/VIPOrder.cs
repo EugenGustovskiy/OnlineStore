@@ -12,10 +12,11 @@
             }
             set
             {
-                if(value == "No name present" || value == "")
+                if(value == "No name present" || value == "" || value == null)
                 {
                     throw new ArgumentOutOfRangeException("Invalid value");
                 }
+                _present = value;
             }
         }
 
@@ -29,6 +30,20 @@
         {
             return $"Product name: {ProductName}, Product price: {ProductPrice} BYN, Customer number: +{CustomerNumber}, " +
                    $"Delivery address: {DeliveryAddress}, Present: {Present}";
+        }
+
+        public override bool Equals(object? obj)
+        {
+            if (obj is VIPOrder)
+            {
+                VIPOrder vipOrder = obj as VIPOrder;
+                return vipOrder.ProductName == ProductName &&
+                       vipOrder.ProductPrice == ProductPrice &&
+                       vipOrder.CustomerNumber == CustomerNumber &&
+                       vipOrder.DeliveryAddress == DeliveryAddress &&
+                       vipOrder.Present == Present;
+            }
+            return false;
         }
     }
 }
