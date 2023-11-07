@@ -5,12 +5,62 @@ namespace OnlineStore.Core.DeliveryMethods
 {
     public abstract class BaseDeliveryMethod : IDelivery
     {
-        public string Name;
-        public int AverageDeliveryTime;
-        public int MaximumOrderQuantity;
+        private string _name;
+        private byte _averageDeliveryTime;
+        private byte _maximumOrderQuantity;
+
+
+        public string Name
+        { 
+            get 
+            { 
+                return _name; 
+            } 
+            set
+            {
+                if (value == "No name" || value == "")
+                {
+                    throw new ArgumentOutOfRangeException("Invalid value");
+                }
+                _name = value;
+            }
+        }
+
+        public byte AverageDeliveryTime
+        {
+            get
+            { 
+                return _averageDeliveryTime;
+            }
+            set
+            {
+                if(value < 0)
+                {
+                    throw new ArgumentOutOfRangeException("Invalid value");
+                }
+                _averageDeliveryTime = value;
+            }
+        }
+
+        public byte MaximumOrderQuantity
+        {
+            get
+            {
+                return _averageDeliveryTime;
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException("Invalid value");
+                }
+                _maximumOrderQuantity = value;
+            }
+        }
+
         public List<Order> _orders = new List<Order>();
 
-        public BaseDeliveryMethod(string name, int averageDeliveryTime, int maximumOrderQuantity)
+        public BaseDeliveryMethod(string name, byte averageDeliveryTime, byte maximumOrderQuantity)
         {
             Name = name;
             AverageDeliveryTime = averageDeliveryTime;
@@ -28,7 +78,7 @@ namespace OnlineStore.Core.DeliveryMethods
 
         public bool DeliverOrder(Order order)
         {
-            if (/*IsFree() == true &&*/ order is VIPOrder)
+            if (order is VIPOrder)
             {
                 _orders.Add(order);
                 MaximumOrderQuantity = 0;

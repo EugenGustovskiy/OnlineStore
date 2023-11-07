@@ -4,30 +4,29 @@ namespace OnlineStore.Core.DeliveryMethods
 {
     internal class MotorcycleDelivery : BaseDeliveryMethod
     {
-        public string RegistrationNumber;
+        private string _registrationNumber;
 
-        public MotorcycleDelivery(string name, int averageDeliveryTime, int maximumOrderQuantity, string registrationNumber) :
+        public string RegistrationNumber
+        {
+            get
+            {
+                return _registrationNumber;
+            }
+            set
+            {
+                if (value.Length != 7)
+                {
+                    throw new ArgumentOutOfRangeException("Invalid value");
+                }
+                _registrationNumber = value;
+            }
+        }
+
+        public MotorcycleDelivery(string name, byte averageDeliveryTime, byte maximumOrderQuantity, string registrationNumber) :
                              base(name, averageDeliveryTime, maximumOrderQuantity)
         {
             RegistrationNumber = registrationNumber;
         }
-
-        //public override bool DeliverOrder(Order order)
-        //{
-        //    if (IsFree() == true && order is VIPOrder)
-        //    {
-        //        _orders.Add(order);
-        //        MaximumOrderQuantity = 0;
-        //        return true;
-        //    }
-        //    else if (IsFree() == true)
-        //    {
-        //        _orders.Add(order);
-        //        MaximumOrderQuantity -= 1;
-        //        return true;
-        //    }
-        //    return false;
-        //}
 
         public override int ExpectedDeliveryTime(Order order)
         {

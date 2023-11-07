@@ -5,7 +5,22 @@ namespace OnlineStore.Core
 {
     public class DeliveryService
     {
-        public string CompanyName { get; }
+        private string _companyName;
+        public string CompanyName 
+        { 
+            get
+            {
+                return _companyName;
+            }
+            set
+            {
+                if (value == "No name" || value == "")
+                {
+                    throw new ArgumentOutOfRangeException("Invalid value");
+                }
+                _companyName = value;
+            } 
+        }
         List<Order> _orders = new List<Order>();
         List<BaseDeliveryMethod> _deliveryMethods = new List<BaseDeliveryMethod>();
 

@@ -3,7 +3,21 @@
 {
     public class VIPOrder : Order
     {
-        public string Present { get; set; }
+        private string _present;
+        public string Present 
+        { 
+            get
+            {
+                return _present;
+            }
+            set
+            {
+                if(value == "No name present" || value == "")
+                {
+                    throw new ArgumentOutOfRangeException("Invalid value");
+                }
+            }
+        }
 
         public VIPOrder(string productName, float productPrice, long customerName, string deliveryAddress, string present) : base
                        (productName, productPrice, customerName, deliveryAddress)

@@ -4,30 +4,29 @@ namespace OnlineStore.Core.DeliveryMethods
 {
     public class DroneDelivery : BaseDeliveryMethod
     {
-        public string IdentificationalNumber;
+        private string _identificationalNumber;
 
-        public DroneDelivery(string name, int averageDeliveryTime, int maximumOrderQuantity, string identificationalNumber) :
+        public string IdentificationalNumber
+        {
+            get
+            {
+                return _identificationalNumber;
+            }
+            set
+            {
+                if(value.Length != 10)
+                {
+                    throw new ArgumentOutOfRangeException("Invalid value");
+                }
+                _identificationalNumber = value;
+            }
+        }
+
+        public DroneDelivery(string name, byte averageDeliveryTime, byte maximumOrderQuantity, string identificationalNumber) :
                         base(name, averageDeliveryTime, maximumOrderQuantity)
         {
             IdentificationalNumber = identificationalNumber;
         }
-
-        //public override bool DeliverOrder(Order order)
-        //{
-        //    if (IsFree() == true && order is VIPOrder)
-        //    {
-        //        _orders.Add(order);
-        //        MaximumOrderQuantity = 0;
-        //        return true;
-        //    }
-        //    else if (IsFree() == true)
-        //    {
-        //        _orders.Add(order);
-        //        MaximumOrderQuantity -= 1;
-        //        return true;
-        //    }
-        //    return false;
-        //}
 
         public override int ExpectedDeliveryTime(Order order)
         {

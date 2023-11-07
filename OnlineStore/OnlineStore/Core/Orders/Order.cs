@@ -6,6 +6,7 @@
         private string _productName;
         private float _productPrice;
         private long _customerNumber;
+        private string _deliveryAddress;
 
         public string ProductName
         {
@@ -15,14 +16,11 @@
             }
             set
             {
-                if (value != "No name" && value != "")
+                if (value == "No name" || value == "")
                 {
-                    _productName = value;
+                    throw new ArgumentOutOfRangeException("Invalid value");
                 }
-                else
-                {
-                    _productName = "PROBLEMS WITH THE NAME";
-                }
+                _productName = value;
             }
         }
         public float ProductPrice
@@ -33,10 +31,11 @@
             }
             set
             {
-                if (value > 0 && value < 4000)
+                if(value < 0 || value > 4000)
                 {
-                    _productPrice = value;
+                    throw new ArgumentOutOfRangeException("Invalid value");
                 }
+                _productPrice = value;
             }
         }
         public long CustomerNumber
@@ -47,14 +46,29 @@
             }
             set
             {
-                if (value > 0 && value.ToString().Length == 12)
+                if (value < 0 || value.ToString().Length != 12)
                 {
-                    _customerNumber = value;
+                    throw new ArgumentOutOfRangeException("Invalid value");
                 }
+                _customerNumber = value;
             }
         }
 
-        public string DeliveryAddress { get; set; }
+        public string DeliveryAddress
+        { 
+            get
+            {
+                return _deliveryAddress;
+            }
+            set
+            {
+                if(value == "No address" || value == "")
+                {
+                    throw new ArgumentOutOfRangeException("Invalid value");
+                }
+                _deliveryAddress = value;
+            }
+        }
 
         public Order(string productName, float productPrice, long customerName, string deliveryAddress)
         {

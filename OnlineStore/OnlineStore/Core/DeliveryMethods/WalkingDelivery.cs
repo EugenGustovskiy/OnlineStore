@@ -4,7 +4,7 @@ namespace OnlineStore.Core.DeliveryMethods
 {
     public class WalkingDelivery : BaseDeliveryMethod
     {
-        public WalkingDelivery(string name, int averageDeliveryTime, int maximumOrderQuantity) :
+        public WalkingDelivery(string name, byte averageDeliveryTime, byte maximumOrderQuantity) :
                           base(name, averageDeliveryTime, maximumOrderQuantity)
         { }
 
