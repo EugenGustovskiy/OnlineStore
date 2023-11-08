@@ -9,7 +9,6 @@ namespace OnlineStore.Core.DeliveryMethods
         private byte _averageDeliveryTime;
         private byte _maximumOrderQuantity;
 
-
         public string Name
         { 
             get 
@@ -92,7 +91,6 @@ namespace OnlineStore.Core.DeliveryMethods
             }
             return false;
         }
-
 
         public abstract int ExpectedDeliveryTime(Order order);
     }

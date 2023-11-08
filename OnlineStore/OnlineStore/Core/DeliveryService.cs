@@ -21,28 +21,32 @@ namespace OnlineStore.Core
                 _companyName = value;
             } 
         }
-        List<Order> _orders = new List<Order>();
-        List<BaseDeliveryMethod> _deliveryMethods = new List<BaseDeliveryMethod>();
+        public List<Order> _orders = new List<Order>();
+        public List<BaseDeliveryMethod> _deliveryMethods = new List<BaseDeliveryMethod>();
 
         public DeliveryService(string companyName)
         {
             CompanyName = companyName;
-            _deliveryMethods.Add(new WalkingDelivery("Sergey", (byte)60, (byte)2));
-            _deliveryMethods.Add(new MotorcycleDelivery("Gleb", (byte)25, (byte)2, "3647MX5"));
-            _deliveryMethods.Add(new CarDelivery("Artem", (byte)35, (byte)5, "9800KI3"));
-            _deliveryMethods.Add(new DroneDelivery("Baby", (byte)20, (byte)1, "230796EG27"));
-        }
-
-        public bool AddOrder(Order order)
-        {
-            _orders.Add(order);
-            return true;
         }
 
         public bool AddDeliveryMethod(BaseDeliveryMethod method)
         {
-            _deliveryMethods.Add(method);
-            return true;
+            if (method != null)
+            {
+                _deliveryMethods.Add(method);
+                return true;
+            }
+            return false;
+        }
+
+        public bool AddOrder(Order order)
+        {
+            if (order != null)
+            {
+                _orders.Add(order);
+                return true;
+            }
+            return false;
         }
 
         public List<Order> PriorityOfOrders(List<Order> _orders)
