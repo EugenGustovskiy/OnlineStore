@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9AC4wIZlZv5hZ/eXcmvs+w4YIMZC+7qQKi7S+GdkkQhm2wBadPHe3ZImx02TS/+VGvGvXm9xff+FyzDR6qPdXw==",
+  "dgSpecHash": "rXh20FFiNB9aoswfx6aJ4iot4ERgD3bN5PEEqcozvtdSHIUCuhu979zL47Bis1NRx7KlEfdaP2SwA/C4E9l/QQ==",
   "success": true,
-  "projectFilePath": "D:\\Project\\OnlineStore\\OnlineStore\\OnLineStoreTests\\OnLineStoreTests.csproj",
+  "projectFilePath": "D:\\Project\\OnlineStore\\OnlineStore\\OnLineStoreTests\\OnlineStoreTests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\plhus\\.nuget\\packages\\coverlet.collector\\3.2.0\\coverlet.collector.3.2.0.nupkg.sha512",
     "C:\\Users\\plhus\\.nuget\\packages\\microsoft.codecoverage\\17.5.0\\microsoft.codecoverage.17.5.0.nupkg.sha512",

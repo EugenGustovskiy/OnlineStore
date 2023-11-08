@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Project\\OnlineStore\\OnlineStore\\OnLineStoreTests\\OnLineStoreTests.csproj": {}
+    "D:\\Project\\OnlineStore\\OnlineStore\\OnLineStoreTests\\OnlineStoreTests.csproj": {}
   },
   "projects": {
-    "D:\\Project\\OnlineStore\\OnlineStore\\OnLineStoreTests\\OnLineStoreTests.csproj": {
+    "D:\\Project\\OnlineStore\\OnlineStore\\OnLineStoreTests\\OnlineStoreTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Project\\OnlineStore\\OnlineStore\\OnLineStoreTests\\OnLineStoreTests.csproj",
-        "projectName": "OnLineStoreTests",
-        "projectPath": "D:\\Project\\OnlineStore\\OnlineStore\\OnLineStoreTests\\OnLineStoreTests.csproj",
+        "projectUniqueName": "D:\\Project\\OnlineStore\\OnlineStore\\OnLineStoreTests\\OnlineStoreTests.csproj",
+        "projectName": "OnlineStoreTests",
+        "projectPath": "D:\\Project\\OnlineStore\\OnlineStore\\OnLineStoreTests\\OnlineStoreTests.csproj",
         "packagesPath": "C:\\Users\\plhus\\.nuget\\packages\\",
         "outputPath": "D:\\Project\\OnlineStore\\OnlineStore\\OnLineStoreTests\\obj\\",
         "projectStyle": "PackageReference",
