@@ -78,7 +78,7 @@ namespace OnlineStore.Core.DeliveryMethods
 
         public bool DeliverOrder(Order order)
         {
-            if (order is VIPOrder)
+            if (IsFree() == true && order is VIPOrder)
             {
                 _orders.Add(order);
                 MaximumOrderQuantity = 0;

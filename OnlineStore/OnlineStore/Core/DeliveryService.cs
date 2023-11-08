@@ -27,10 +27,10 @@ namespace OnlineStore.Core
         public DeliveryService(string companyName)
         {
             CompanyName = companyName;
-            _deliveryMethods.Add(new WalkingDelivery("Sergey", 60, 2));
-            _deliveryMethods.Add(new MotorcycleDelivery("Gleb", 25, 2, "3647MX5"));
-            _deliveryMethods.Add(new CarDelivery("Artem", 35, 5, "9800KI3"));
-            _deliveryMethods.Add(new DroneDelivery("Baby", 20, 1, "230796EG27"));
+            _deliveryMethods.Add(new WalkingDelivery("Sergey", (byte)60, (byte)2));
+            _deliveryMethods.Add(new MotorcycleDelivery("Gleb", (byte)25, (byte)2, "3647MX5"));
+            _deliveryMethods.Add(new CarDelivery("Artem", (byte)35, (byte)5, "9800KI3"));
+            _deliveryMethods.Add(new DroneDelivery("Baby", (byte)20, (byte)1, "230796EG27"));
         }
 
         public bool AddOrder(Order order)
