@@ -2,7 +2,7 @@
 
 namespace OnlineStore.Core.DeliveryMethods
 {
-    internal class MotorcycleDelivery : BaseDeliveryMethod
+    public class MotorcycleDelivery : BaseDeliveryMethod
     {
         private string _registrationNumber;
 

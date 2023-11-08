@@ -4,9 +4,9 @@ using OnlineStore.Core.Orders;
 namespace OnLineStoreTests.TestsForDeliveryMethods
 {
     [TestClass]
-    public class WalkingDeliveryTests
+    public class MotorcycleDeliveryTests
     {
-        public WalkingDelivery WalkingPerson;
+        public MotorcycleDelivery Motorcycle;
         public Order Order;
         public VIPOrder VIPOrder;
         public DiscountOrder DiscountOrder;
@@ -15,7 +15,7 @@ namespace OnLineStoreTests.TestsForDeliveryMethods
         [TestInitialize]
         public void BeforeTest()
         {
-            WalkingPerson = new("Sergey", (byte)60, (byte)2);
+            Motorcycle = new("Gleb", (byte)25, (byte)2, "3647MX5");
             Order = new("Xiaomi MI TV", 1329, 375336746162, "Minks, Odintsova, 21, 42");
             VIPOrder = new("Phone Honor 90", 1599, 375295963418, "Minks, Ponomarenko, 9, 4", "Honor Choice Earbuds X5");
             DiscountOrder = new("Phone Huawei Mate 50 Pro", 2699, 375334287626, "Minks, Kamennogorskaya, 138, 98", 10);
@@ -23,18 +23,27 @@ namespace OnLineStoreTests.TestsForDeliveryMethods
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        [DataRow("No name", (byte)60, (byte)2)]
-        [DataRow("", (byte)60, (byte)2)]
-        [DataRow(null, (byte)60, (byte)2)]
-        public void NegativeWalkingDeliveryNameTest(string name, byte averageDeliveryTime, byte maximumOrderQuantity)
+        [DataRow("No name", (byte)25, (byte)2, "3647MX5")]
+        [DataRow("", (byte)25, (byte)2, "3647MX5")]
+        [DataRow(null, (byte)25, (byte)2, "3647MX5")]
+        public void NegativeMotorcycleDeliveryNameTest(string name, byte averageDeliveryTime, byte maximumOrderQuantity, string registrationNumber)
         {
-            WalkingDelivery walkingPersonNew = new(name, averageDeliveryTime, maximumOrderQuantity);
+            MotorcycleDelivery motorcycleNew = new(name, averageDeliveryTime, maximumOrderQuantity, registrationNumber);
         }
 
         [TestMethod]
-        [DataRow(typeof(Order), 60)]
-        [DataRow(typeof(VIPOrder), 45)]
-        [DataRow(typeof(DiscountOrder), 60)]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        [DataRow("Gleb", (byte)25, (byte)2, "3647MX")]
+        [DataRow("Gleb", (byte)25, (byte)2, "3647MX57")]
+        public void NegativeMotorcycleDeliveryRegistrationNumberTest(string name, byte averageDeliveryTime, byte maximumOrderQuantity, string registrationNumber)
+        {
+            MotorcycleDelivery motorcycleNew = new(name, averageDeliveryTime, maximumOrderQuantity, registrationNumber);
+        }
+
+        [TestMethod]
+        [DataRow(typeof(Order), 25)]
+        [DataRow(typeof(VIPOrder), 15)]
+        [DataRow(typeof(DiscountOrder), 25)]
         public void ExpectedDeliveryTimePositiveTest(Type orderType, int expectedResult)
         {
             Order order = null;
@@ -52,15 +61,15 @@ namespace OnLineStoreTests.TestsForDeliveryMethods
                 order = DiscountOrder;
             }
 
-            int actualResult = WalkingPerson.ExpectedDeliveryTime(order);
+            int actualResult = Motorcycle.ExpectedDeliveryTime(order);
 
             Assert.AreEqual(expectedResult, actualResult);
         }
 
         [TestMethod]
-        [DataRow(typeof(Order), 61)]
-        [DataRow(typeof(VIPOrder), 46)]
-        [DataRow(typeof(DiscountOrder), 61)]
+        [DataRow(typeof(Order), 26)]
+        [DataRow(typeof(VIPOrder), 16)]
+        [DataRow(typeof(DiscountOrder), 26)]
         public void ExpectedDeliveryTimeNegativeTest(Type orderType, int expectedResult)
         {
             Order order = null;
@@ -78,7 +87,7 @@ namespace OnLineStoreTests.TestsForDeliveryMethods
                 order = DiscountOrder;
             }
 
-            int actualResult = WalkingPerson.ExpectedDeliveryTime(order);
+            int actualResult = Motorcycle.ExpectedDeliveryTime(order);
 
             Assert.AreNotEqual(expectedResult, actualResult);
         }
@@ -87,7 +96,7 @@ namespace OnLineStoreTests.TestsForDeliveryMethods
         public void IsFreePositiveTest()
         {
             bool expectedResult = true;
-            bool actualResult = WalkingPerson.IsFree();
+            bool actualResult = Motorcycle.IsFree();
 
             Assert.AreEqual(expectedResult, actualResult);
         }
@@ -95,10 +104,10 @@ namespace OnLineStoreTests.TestsForDeliveryMethods
         [TestMethod]
         public void IsFreeNegativeTest()
         {
-            WalkingPerson.MaximumOrderQuantity = 0;
-
+            Motorcycle.MaximumOrderQuantity = 0;
+            
             bool expectedResult = true;
-            bool actualResult = WalkingPerson.IsFree();
+            bool actualResult = Motorcycle.IsFree();
 
             Assert.AreNotEqual(expectedResult, actualResult);
         }
@@ -124,18 +133,18 @@ namespace OnLineStoreTests.TestsForDeliveryMethods
                 order = DiscountOrder;
             }
 
-            bool actualResult = WalkingPerson.DeliverOrder(order);
+            bool actualResult = Motorcycle.DeliverOrder(order);
 
             Assert.AreEqual(expectedResult, actualResult);
         }
 
-        [TestMethod]
+        [DataTestMethod]
         [DataRow(typeof(Order), true)]
         [DataRow(typeof(VIPOrder), true)]
         [DataRow(typeof(DiscountOrder), true)]
         public void DeliverOrderNegativeTest(Type orderType, bool expectedResult)
         {
-            WalkingPerson.MaximumOrderQuantity = 0;
+            Motorcycle.MaximumOrderQuantity = 0;
 
             Order order = null;
 
@@ -152,7 +161,7 @@ namespace OnLineStoreTests.TestsForDeliveryMethods
                 order = DiscountOrder;
             }
 
-            bool actualResult = WalkingPerson.DeliverOrder(order);
+            bool actualResult = Motorcycle.DeliverOrder(order);
 
             Assert.AreNotEqual(expectedResult, actualResult);
         }

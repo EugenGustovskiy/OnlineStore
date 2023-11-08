@@ -4,18 +4,17 @@ using OnlineStore.Core.Orders;
 namespace OnLineStoreTests.TestsForDeliveryMethods
 {
     [TestClass]
-    public class WalkingDeliveryTests
+    public class DroneDeliveryTests
     {
-        public WalkingDelivery WalkingPerson;
+        public DroneDelivery Drone;
         public Order Order;
         public VIPOrder VIPOrder;
         public DiscountOrder DiscountOrder;
 
-
         [TestInitialize]
         public void BeforeTest()
         {
-            WalkingPerson = new("Sergey", (byte)60, (byte)2);
+            Drone = new("Baby", (byte)20, (byte)1, "230796EG27");
             Order = new("Xiaomi MI TV", 1329, 375336746162, "Minks, Odintsova, 21, 42");
             VIPOrder = new("Phone Honor 90", 1599, 375295963418, "Minks, Ponomarenko, 9, 4", "Honor Choice Earbuds X5");
             DiscountOrder = new("Phone Huawei Mate 50 Pro", 2699, 375334287626, "Minks, Kamennogorskaya, 138, 98", 10);
@@ -23,18 +22,27 @@ namespace OnLineStoreTests.TestsForDeliveryMethods
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        [DataRow("No name", (byte)60, (byte)2)]
-        [DataRow("", (byte)60, (byte)2)]
-        [DataRow(null, (byte)60, (byte)2)]
-        public void NegativeWalkingDeliveryNameTest(string name, byte averageDeliveryTime, byte maximumOrderQuantity)
+        [DataRow("No name", (byte)20, (byte)1, "230796EG27")]
+        [DataRow("", (byte)20, (byte)1, "230796EG27")]
+        [DataRow(null, (byte)20, (byte)1, "230796EG27")]
+        public void NegativeDroneDeliveryNameTest(string name, byte averageDeliveryTime, byte maximumOrderQuantity, string identificationalNumber)
         {
-            WalkingDelivery walkingPersonNew = new(name, averageDeliveryTime, maximumOrderQuantity);
+            DroneDelivery droneNew = new(name, averageDeliveryTime, maximumOrderQuantity, identificationalNumber);
         }
 
         [TestMethod]
-        [DataRow(typeof(Order), 60)]
-        [DataRow(typeof(VIPOrder), 45)]
-        [DataRow(typeof(DiscountOrder), 60)]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        [DataRow("Baby", (byte)20, (byte)1, "230796EG2")]
+        [DataRow("Baby", (byte)20, (byte)1, "230796EG270")]
+        public void NegativeDroneDeliveryIdentificationalNumberTest(string name, byte averageDeliveryTime, byte maximumOrderQuantity, string identificationalNumber)
+        {
+            DroneDelivery droneNew = new(name, averageDeliveryTime, maximumOrderQuantity, identificationalNumber);
+        }
+
+        [TestMethod]
+        [DataRow(typeof(Order), 20)]
+        [DataRow(typeof(VIPOrder), 10)]
+        [DataRow(typeof(DiscountOrder), 20)]
         public void ExpectedDeliveryTimePositiveTest(Type orderType, int expectedResult)
         {
             Order order = null;
@@ -52,15 +60,15 @@ namespace OnLineStoreTests.TestsForDeliveryMethods
                 order = DiscountOrder;
             }
 
-            int actualResult = WalkingPerson.ExpectedDeliveryTime(order);
+            int actualResult = Drone.ExpectedDeliveryTime(order);
 
             Assert.AreEqual(expectedResult, actualResult);
         }
 
         [TestMethod]
-        [DataRow(typeof(Order), 61)]
-        [DataRow(typeof(VIPOrder), 46)]
-        [DataRow(typeof(DiscountOrder), 61)]
+        [DataRow(typeof(Order), 21)]
+        [DataRow(typeof(VIPOrder), 11)]
+        [DataRow(typeof(DiscountOrder), 21)]
         public void ExpectedDeliveryTimeNegativeTest(Type orderType, int expectedResult)
         {
             Order order = null;
@@ -78,7 +86,7 @@ namespace OnLineStoreTests.TestsForDeliveryMethods
                 order = DiscountOrder;
             }
 
-            int actualResult = WalkingPerson.ExpectedDeliveryTime(order);
+            int actualResult = Drone.ExpectedDeliveryTime(order);
 
             Assert.AreNotEqual(expectedResult, actualResult);
         }
@@ -87,7 +95,7 @@ namespace OnLineStoreTests.TestsForDeliveryMethods
         public void IsFreePositiveTest()
         {
             bool expectedResult = true;
-            bool actualResult = WalkingPerson.IsFree();
+            bool actualResult = Drone.IsFree();
 
             Assert.AreEqual(expectedResult, actualResult);
         }
@@ -95,10 +103,10 @@ namespace OnLineStoreTests.TestsForDeliveryMethods
         [TestMethod]
         public void IsFreeNegativeTest()
         {
-            WalkingPerson.MaximumOrderQuantity = 0;
+            Drone.MaximumOrderQuantity = 0;
 
             bool expectedResult = true;
-            bool actualResult = WalkingPerson.IsFree();
+            bool actualResult = Drone.IsFree();
 
             Assert.AreNotEqual(expectedResult, actualResult);
         }
@@ -124,18 +132,18 @@ namespace OnLineStoreTests.TestsForDeliveryMethods
                 order = DiscountOrder;
             }
 
-            bool actualResult = WalkingPerson.DeliverOrder(order);
+            bool actualResult = Drone.DeliverOrder(order);
 
             Assert.AreEqual(expectedResult, actualResult);
         }
 
-        [TestMethod]
+        [DataTestMethod]
         [DataRow(typeof(Order), true)]
         [DataRow(typeof(VIPOrder), true)]
         [DataRow(typeof(DiscountOrder), true)]
         public void DeliverOrderNegativeTest(Type orderType, bool expectedResult)
         {
-            WalkingPerson.MaximumOrderQuantity = 0;
+            Drone.MaximumOrderQuantity = 0;
 
             Order order = null;
 
@@ -152,7 +160,7 @@ namespace OnLineStoreTests.TestsForDeliveryMethods
                 order = DiscountOrder;
             }
 
-            bool actualResult = WalkingPerson.DeliverOrder(order);
+            bool actualResult = Drone.DeliverOrder(order);
 
             Assert.AreNotEqual(expectedResult, actualResult);
         }
