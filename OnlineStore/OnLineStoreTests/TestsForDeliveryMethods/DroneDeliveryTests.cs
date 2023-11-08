@@ -1,7 +1,7 @@
 ﻿using OnlineStore.Core.DeliveryMethods;
 using OnlineStore.Core.Orders;
 
-namespace OnLineStoreTests.TestsForDeliveryMethods
+namespace OnlineStoreTests.TestsForDeliveryMethods
 {
     [TestClass]
     public class DroneDeliveryTests

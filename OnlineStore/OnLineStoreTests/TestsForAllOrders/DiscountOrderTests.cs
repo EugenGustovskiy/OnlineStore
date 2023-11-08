@@ -1,6 +1,6 @@
 ﻿using OnlineStore.Core.Orders;
 
-namespace OnLineStoreTests.TestsForAllOrders
+namespace OnlineStoreTests.TestsForAllOrders
 {
     [TestClass]
     public class DiscountOrdersTests

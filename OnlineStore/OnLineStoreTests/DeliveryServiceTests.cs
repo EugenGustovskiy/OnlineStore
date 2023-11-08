@@ -2,7 +2,7 @@
 using OnlineStore.Core.DeliveryMethods;
 using OnlineStore.Core.Orders;
 
-namespace OnLineStoreTests
+namespace OnlineStoreTests
 {
     [TestClass]
     public class DeliveryServiceTests

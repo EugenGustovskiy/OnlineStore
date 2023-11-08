@@ -2,7 +2,7 @@
 using OnlineStore.Core.Orders;
 using System.Text;
 
-namespace OnLineStoreTests.TestsForDeliveryMethods
+namespace OnlineStoreTests.TestsForDeliveryMethods
 {
     [TestClass]
     public class CarDeliveryTests

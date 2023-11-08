@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v6.0": {
-      "OnLineStoreTests/1.0.0": {
+      "OnlineStoreTests/1.0.0": {
         "dependencies": {
           "MSTest.TestAdapter": "2.2.10",
           "MSTest.TestFramework": "2.2.10",
@@ -16,7 +16,7 @@
           "Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions": "14.0.0.0"
         },
         "runtime": {
-          "OnLineStoreTests.dll": {}
+          "OnlineStoreTests.dll": {}
         }
       },
       "coverlet.collector/3.2.0": {},
@@ -447,7 +447,7 @@
     }
   },
   "libraries": {
-    "OnLineStoreTests/1.0.0": {
+    "OnlineStoreTests/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
